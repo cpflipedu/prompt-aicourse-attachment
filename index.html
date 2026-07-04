@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<template id="__bundler_thumbnail" data-bg-color="#1F5DA8">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#1F5DA8"/>
+    <rect x="360" y="250" width="480" height="300" rx="28" fill="#FCFAF5"/>
+    <rect x="410" y="300" width="150" height="26" rx="8" fill="#1F5DA8"/>
+    <rect x="410" y="352" width="380" height="16" rx="8" fill="#D8CEBE"/>
+    <rect x="410" y="388" width="340" height="16" rx="8" fill="#D8CEBE"/>
+    <rect x="410" y="440" width="300" height="46" rx="12" fill="#EFE7D8"/>
+    <circle cx="440" cy="463" r="9" fill="#B5764A"/>
+  </svg>
+</template>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&amp;display=swap" rel="stylesheet">
+<script src="prompts-data-B.js"></script>
+<style>
+  body { margin:0; background:#F2F2F1; color:#2C2C2C; font-family:'Noto Sans TC',system-ui,-apple-system,sans-serif; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+  .doc { box-sizing:border-box; max-width:960px; margin:0 auto; background:#F2F2F1; padding:56px clamp(20px,5vw,60px) 110px; }
+  .doc-frame { width:100%; border-collapse:collapse; }
+  .doc-frame td { padding:0; }
+  .hdr-space, .ftr-space { display:none; }
+  pre { font-family:'Noto Sans TC',system-ui,sans-serif; }
+  @page { size:A4; margin:0; }
+  @media print {
+    .back-to-index { display: none !important; }
+    html { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    html, body { margin:0; padding:0; background:#fff; }
+    .doc { max-width:none !important; margin:0 !important; padding:0 0.6in !important; background:#fff !important; }
+    .hdr-space, .ftr-space { display:table-cell; height:0.55in; }
+    h1,h2,h3,h4 { break-after:avoid; }
+    .prompt-box, .callout, .keep, .prompt-card, tr,
+    [style*="grid-template-columns"] { break-inside:avoid; }
+    /* 每個說明段落各自從新頁開始 */
+    #toc, #sec-howto, #sec-cards, #sec-prompt, #sec-model,
+    #index-top, #sec-all, #index-full, #sec-skill, #sec-resources { break-before:page; }
+    /* 「指令內容 / 教學指令全集」小標與大標不被拆開 */
+    #sec-all { break-inside:avoid; }
+    /* 年段分章換頁；但「全集」標題後緊接第一張卡不分頁 */
+    .chapter-divider { break-before:page; }
+    #grade-0 { break-before:avoid; }
+    /* 手動分頁標記：可在指令資料加 "pageBreak":"before" / "avoid" */
+    .prompt-card.pb-before { break-before:page; }
+    .prompt-card.pb-avoid  { break-before:avoid; }
+  }
+</style>
+</helmet>
+<main class="doc">
+<table class="doc-frame" role="presentation">
+<thead><tr><td class="hdr-space"></td></tr></thead>
+<tbody><tr><td>
+
+<header style="padding:18px 0 40px;border-bottom:1px solid #E3E3E1;margin-bottom:56px;">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:30px;">
+    <img src="assets/flipped-logo.png" alt="翻轉教育 Flipped Education" style="height:44px;width:auto;display:block;">
+    <span style="display:inline-flex;align-items:center;gap:8px;padding:8px 15px;border-radius:999px;background:#1F5DA814;color:#1B4E8C;font-size:13px;font-weight:700;letter-spacing:.03em;">翻轉教育學院 ｜ AI 賦能教學實戰</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;">
+    <span style="display:inline-block;width:9px;height:9px;border-radius:2px;background:#1F5DA8;"></span>
+    <span style="font-size:13px;font-weight:700;letter-spacing:.2em;color:#1F5DA8;">課程專屬附件 · 指令工具箱</span>
+  </div>
+  <h1 style="font-size:clamp(38px,6.4vw,62px);line-height:1.12;font-weight:900;letter-spacing:-.01em;margin:0 0 22px;color:#232323;">給老師的<br>AI 應用指令包</h1>
+  <p style="font-size:clamp(17px,2.4vw,21px);line-height:1.62;color:#575757;max-width:660px;margin:0 0 30px;font-weight:500;">各年段 × 各科目，<strong style="color:#1F5DA8;font-weight:700;">100＋</strong> 份可直接複製、即用即上手的教學指令——從備課、評量到班級經營，一次備齊。</p>
+  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px;">
+    <span style="display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border-radius:999px;background:#FBE7E4;color:#B14A3E;font-size:13px;font-weight:700;"><span style="width:7px;height:7px;border-radius:50%;background:#C9594B;"></span>幼教</span>
+    <span style="display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border-radius:999px;background:#E8F2DC;color:#4F7A2E;font-size:13px;font-weight:700;"><span style="width:7px;height:7px;border-radius:50%;background:#6B9B3F;"></span>國小</span>
+    <span style="display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border-radius:999px;background:#E0EAF6;color:#3A5E8C;font-size:13px;font-weight:700;"><span style="width:7px;height:7px;border-radius:50%;background:#4F77AD;"></span>國中</span>
+    <span style="display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border-radius:999px;background:#EAE4F4;color:#5E4B8C;font-size:13px;font-weight:700;"><span style="width:7px;height:7px;border-radius:50%;background:#7A63AD;"></span>高中</span>
+    <span style="display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border-radius:999px;background:#EDEAE4;color:#6B635A;font-size:13px;font-weight:700;"><span style="width:7px;height:7px;border-radius:50%;background:#9A8F80;"></span>通用</span>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;">
+    <div style="border:1px solid #E3E3E1;border-radius:14px;padding:18px 20px;background:#FFFFFF;">
+      <div style="font-size:28px;font-weight:900;color:#232323;line-height:1;margin-bottom:7px;">5</div>
+      <div style="font-size:13px;color:#888888;font-weight:600;">年段段別</div>
+    </div>
+    <div style="border:1px solid #E3E3E1;border-radius:14px;padding:18px 20px;background:#FFFFFF;">
+      <div style="font-size:28px;font-weight:900;color:#232323;line-height:1;margin-bottom:7px;">10</div>
+      <div style="font-size:13px;color:#888888;font-weight:600;">科目領域</div>
+    </div>
+    <div style="border:1px solid #E3E3E1;border-radius:14px;padding:18px 20px;background:#FFFFFF;">
+      <div style="font-size:28px;font-weight:900;color:#1F5DA8;line-height:1;margin-bottom:7px;">{{ total }}</div>
+      <div style="font-size:13px;color:#888888;font-weight:600;">教學指令</div>
+    </div>
+    <div style="border:1px solid #E3E3E1;border-radius:14px;padding:18px 20px;background:#FFFFFF;">
+      <div style="font-size:28px;font-weight:900;color:#232323;line-height:1;margin-bottom:7px;">參考資源</div>
+      <div style="font-size:13px;color:#888888;font-weight:600;">國內外線上指令庫與資源</div>
+    </div>
+  </div>
+  <div class="callout keep" style="margin-top:30px;background:#1F5DA80A;border:1px solid #1F5DA826;border-left:3px solid #1F5DA8;border-radius:10px;padding:16px 20px;">
+    <div style="font-size:12px;font-weight:800;letter-spacing:.1em;color:#1B4E8C;margin-bottom:6px;">課程專屬教材・請勿外流</div>
+    <div style="font-size:13.5px;line-height:1.65;color:#575757;">本手冊為「翻轉教育學院 —— AI 賦能教學實戰」課程專屬教材，僅供報名學員個人教學與備課使用。未經授權，請勿公開分享、轉載、重製或作任何商業用途。</div>
+  </div>
+</header>
+
+<section id="toc" style="margin-bottom:64px;scroll-margin-top:16px;">
+  <div style="display:flex;align-items:center;gap:11px;margin-bottom:14px;">
+    <span style="width:22px;height:2px;background:#1F5DA8;"></span>
+    <span style="font-size:13px;font-weight:700;letter-spacing:.18em;color:#1F5DA8;">本手冊導覽</span>
+  </div>
+  <h2 style="font-size:clamp(26px,3.6vw,34px);font-weight:900;color:#232323;margin:0 0 12px;letter-spacing:-.01em;">目錄</h2>
+  <p style="font-size: 16px; line-height: 1.7; color: #575757; margin: 0 0 24px; max-width: 800px">先看看手冊裡有什麼；點任一項目即可跳到該段落。除了 110 則教學指令，最後也整理了國內外的官方指令庫與延伸資源。</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin-bottom:26px;">
+    <a href="#sec-howto" style="display:flex;align-items:center;gap:11px;border:1px solid #E3E3E1;border-radius:12px;padding:13px 15px;background:#FFFFFF;text-decoration:none;" style-hover="border-color:#1F5DA8;"><span style="flex:0 0 auto;width:26px;height:26px;border-radius:7px;background:#1F5DA814;color:#1F5DA8;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;">01</span><span style="font-size:14.5px;font-weight:700;color:#2C2C2C;">如何使用本指令包</span></a>
+    <a href="#sec-cards" style="display:flex;align-items:center;gap:11px;border:1px solid #E3E3E1;border-radius:12px;padding:13px 15px;background:#FFFFFF;text-decoration:none;" style-hover="border-color:#1F5DA8;"><span style="flex:0 0 auto;width:26px;height:26px;border-radius:7px;background:#1F5DA814;color:#1F5DA8;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;">02</span><span style="font-size:14.5px;font-weight:700;color:#2C2C2C;">看懂每張指令卡片</span></a>
+    <a href="#sec-prompt" style="display:flex;align-items:center;gap:11px;border:1px solid #E3E3E1;border-radius:12px;padding:13px 15px;background:#FFFFFF;text-decoration:none;" style-hover="border-color:#1F5DA8;"><span style="flex:0 0 auto;width:26px;height:26px;border-radius:7px;background:#1F5DA814;color:#1F5DA8;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;">03</span><span style="font-size:14.5px;font-weight:700;color:#2C2C2C;">寫好指令的基本觀念</span></a>
+    <a href="#sec-model" style="display:flex;align-items:center;gap:11px;border:1px solid #E3E3E1;border-radius:12px;padding:13px 15px;background:#FFFFFF;text-decoration:none;" style-hover="border-color:#1F5DA8;"><span style="flex:0 0 auto;width:26px;height:26px;border-radius:7px;background:#1F5DA814;color:#1F5DA8;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;">04</span><span style="font-size:14.5px;font-weight:700;color:#2C2C2C;">選擇適合的 AI 模型</span></a>
+    <a href="#index-top" style="display:flex;align-items:center;gap:11px;border:1px solid #E3E3E1;border-radius:12px;padding:13px 15px;background:#FFFFFF;text-decoration:none;" style-hover="border-color:#1F5DA8;"><span style="flex:0 0 auto;width:26px;height:26px;border-radius:7px;background:#1F5DA814;color:#1F5DA8;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;">05</span><span style="font-size:14.5px;font-weight:700;color:#2C2C2C;">指令速查表</span></a>
+    <a href="#sec-all" style="display:flex;align-items:center;gap:11px;border:1px solid #E3E3E1;border-radius:12px;padding:13px 15px;background:#FFFFFF;text-decoration:none;" style-hover="border-color:#1F5DA8;"><span style="flex: 0 0 auto; width: 26px; height: 26px; border-radius: 7px; background: rgba(31, 93, 168, 0.08); color: rgb(31, 93, 168); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 900;">06</span><span style="font-size: 14.5px; font-weight: 700; color: rgb(44, 44, 44);">教學指令全集</span></a>
+    <a href="#sec-resources" style="display:flex;align-items:center;gap:11px;border:1px solid #E3E3E1;border-radius:12px;padding:13px 15px;background:#FFFFFF;text-decoration:none;" style-hover="border-color:#1F5DA8;"><span style="flex: 0 0 auto; width: 26px; height: 26px; border-radius: 7px; background: rgba(31, 93, 168, 0.08); color: rgb(31, 93, 168); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 900;">07</span><span style="font-size: 14.5px; font-weight: 700; color: rgb(44, 44, 44);">延伸推薦：國內外教育指令庫</span></a>
+    <a href="#index-full" style="display:flex;align-items:center;gap:11px;border:1px solid #E3E3E1;border-radius:12px;padding:13px 15px;background:#FFFFFF;text-decoration:none;" style-hover="border-color:#1F5DA8;"><span style="flex:0 0 auto;width:26px;height:26px;border-radius:7px;background:#1F5DA814;color:#1F5DA8;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;">08</span><span style="font-size:14.5px;font-weight:700;color:#2C2C2C;">附錄一：完整索引</span></a>
+    <a href="#sec-skill" style="display:flex;align-items:center;gap:11px;border:1px solid #E3E3E1;border-radius:12px;padding:13px 15px;background:#FFFFFF;text-decoration:none;" style-hover="border-color:#1F5DA8;"><span style="flex:0 0 auto;width:26px;height:26px;border-radius:7px;background:#1F5DA814;color:#1F5DA8;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;">09</span><span style="font-size:14.5px;font-weight:700;color:#2C2C2C;">附錄二：進階 Skill 架構</span></a>
+  </div>
+  <div style="margin-bottom:22px;">
+    <div style="font-size:12px;font-weight:700;letter-spacing:.12em;color:#9C9C9C;margin-bottom:10px;">教學指令 · 依年段快速跳轉</div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;">
+      <sc-for list="{{ gradeNav }}" as="g" hint-placeholder-count="5">
+        <a href="#{{ g.gid }}" style="display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;border:1px solid #DBDBD8;background:#FFFFFF;text-decoration:none;font-size:13.5px;font-weight:700;color:#2C2C2C;" style-hover="border-color:#1F5DA8;"><span style="width:8px;height:8px;border-radius:50%;background:{{ g.color }};"></span>{{ g.key }}<span style="font-size:12px;font-weight:600;color:#9C9C9C;">{{ g.count }}</span></a>
+      </sc-for>
+    </div>
+  </div>
+  <a href="#sec-resources" style="display:flex;gap:12px;align-items:center;background:#1F5DA80A;border:1px solid #1F5DA826;border-left:3px solid #1F5DA8;border-radius:10px;padding:15px 18px;text-decoration:none;" style-hover="background:#1F5DA814;">
+    <span style="flex:0 0 auto;font-size:20px;">🚀</span>
+    <span style="font-size:14px;line-height:1.6;color:#3F3F3F;"><strong style="color:#1B4E8C;font-weight:800;">新手上路？</strong>你也可以直接參考 Google 等提供的官方指令庫，點擊指令即可直接開啟軟體試用 <span style="color:#1F5DA8;font-weight:800;white-space:nowrap;">→</span></span>
+  </a>
+</section>
+
+<section id="sec-howto" style="margin-bottom:64px;scroll-margin-top:16px;">
+  <div style="display:flex;align-items:center;gap:11px;margin-bottom:14px;">
+    <span style="width:22px;height:2px;background:#1F5DA8;"></span>
+    <span style="font-size:13px;font-weight:700;letter-spacing:.18em;color:#1F5DA8;">基礎說明</span>
+  </div>
+  <h2 style="font-size:clamp(26px,3.6vw,34px);font-weight:900;color:#232323;margin:0 0 12px;letter-spacing:-.01em;">如何使用本指令包</h2>
+  <p style="font-size: 16px; line-height: 1.7; color: #575757; margin: 0 0 28px; max-width: 800px">每一份指令都是一塊「可複製的積木」。四個步驟，開始體驗把 AI 變成你的專屬助教。</p>
+  <div class="keep" style="display:grid;grid-template-columns:repeat(4,1fr);gap:11px;">
+    <div style="border:1px solid #E3E3E1;border-radius:12px;padding:16px 16px 18px;background:#FFFFFF;">
+      <div style="display:flex;align-items:center;gap:9px;margin-bottom:9px;"><div style="flex:0 0 auto;width:28px;height:28px;border-radius:8px;background:#1F5DA814;color:#1F5DA8;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:15px;">1</div><h4 style="margin:0;font-size:15px;font-weight:800;color:#2C2C2C;white-space:nowrap;">找指令</h4></div>
+      <p style="margin:0;font-size:14px;line-height:1.62;color:#666666;">翻到「指令速查表」或用目錄的年段跳轉，找到符合需求的指令編號。</p>
+    </div>
+    <div style="border:1px solid #E3E3E1;border-radius:12px;padding:16px 16px 18px;background:#FFFFFF;">
+      <div style="display:flex;align-items:center;gap:9px;margin-bottom:9px;"><div style="flex:0 0 auto;width:28px;height:28px;border-radius:8px;background:#1F5DA814;color:#1F5DA8;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:15px;">2</div><h4 style="margin:0;font-size:15px;font-weight:800;color:#2C2C2C;white-space:nowrap;">複製貼上</h4></div>
+      <p style="margin:0;font-size:14px;line-height:1.62;color:#666666;">點卡片中的「複製指令」，貼到你慣用的 AI 工具（ChatGPT、Gemini、Claude…）。</p>
+    </div>
+    <div style="border:1px solid #E3E3E1;border-radius:12px;padding:16px 16px 18px;background:#FFFFFF;">
+      <div style="display:flex;align-items:center;gap:9px;margin-bottom:9px;"><div style="flex:0 0 auto;width:28px;height:28px;border-radius:8px;background:#1F5DA814;color:#1F5DA8;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:15px;">3</div><h4 style="margin:0;font-size:15px;font-weight:800;color:#2C2C2C;white-space:nowrap;">填入內容</h4></div>
+      <p style="margin:0;font-size:14px;line-height:1.62;color:#666666;">把指令中以【】標註的地方，換成你的課文、單元或實際情境。</p>
+    </div>
+    <div style="border:1px solid #E3E3E1;border-radius:12px;padding:16px 16px 18px;background:#FFFFFF;">
+      <div style="display:flex;align-items:center;gap:9px;margin-bottom:9px;"><div style="flex:0 0 auto;width:28px;height:28px;border-radius:8px;background:#1F5DA814;color:#1F5DA8;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:15px;">4</div><h4 style="margin:0;font-size:15px;font-weight:800;color:#2C2C2C;white-space:nowrap;">微調驗證</h4></div>
+      <p style="margin:0;font-size:14px;line-height:1.62;color:#666666;">檢視 AI 產出，依班級程度微調，並務必確認內容正確、適切。</p>
+    </div>
+  </div>
+  <div class="callout" style="margin-top:24px;background:#FBF6EB;border:1px solid #EBDBB4;border-left:3px solid #D6A83E;border-radius:10px;padding:20px 24px;">
+    <div style="font-size:12px;font-weight:700;letter-spacing:.12em;color:#977318;margin-bottom:12px;">使用前的小提醒</div>
+    <div style="display:flex;flex-direction:column;gap:9px;">
+      <div style="display:flex;gap:10px;align-items:flex-start;"><span style="color:#D6A83E;font-weight:900;margin-top:1px;">·</span><span style="font-size:14.5px;line-height:1.65;color:#575757;"><strong style="color: rgb(74, 61, 40);">保護個資：</strong>勿輸入學生姓名、身分證號、地址等可辨識個資，可以用去識別化代稱、代碼描述。</span></div>
+      <div style="display:flex;gap:10px;align-items:flex-start;"><span style="color:#D6A83E;font-weight:900;margin-top:1px;">·</span><span style="font-size:14.5px;line-height:1.65;color:#575757;"><strong style="color:#3F3F3F;">老師把關：</strong>AI 產出僅為草稿，正確性與適切性仍須教師審閱後再使用。</span></div>
+      <div style="display:flex;gap:10px;align-items:flex-start;"><span style="color:#D6A83E;font-weight:900;margin-top:1px;">·</span><span style="font-size:14.5px;line-height:1.65;color:#575757;"><strong style="color: rgb(74, 61, 40);">鼓勵思考：</strong>把 AI 當成協作夥伴，師生應用時應善用工具，不依賴答案。</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="sec-cards" style="margin-bottom:64px;scroll-margin-top:16px;">
+  <div style="display:flex;align-items:center;gap:11px;margin-bottom:14px;">
+    <span style="width:22px;height:2px;background:#1F5DA8;"></span>
+    <span style="font-size:13px;font-weight:700;letter-spacing:.18em;color:#1F5DA8;">卡片說明</span>
+  </div>
+  <h2 style="font-size:clamp(26px,3.6vw,34px);font-weight:900;color:#232323;margin:0 0 12px;letter-spacing:-.01em;">看懂每張指令卡片</h2>
+  <p style="font-size: 16px; line-height: 1.7; color: #575757; margin: 0 0 28px; max-width: 800px">每張卡片都標了兩個標籤：這是哪一種「指令類型」，以及它會幫你做出哪一種「產出」。先認識這兩組分類，就能依需求快速挑選。</p>
+
+  <div style="margin-bottom:30px;">
+    <h3 style="font-size:18px;font-weight:800;color:#2C2C2C;margin:0 0 6px;">兩種指令類型</h3>
+    <p style="font-size:14px;line-height:1.6;color:#888888;margin:0 0 14px;">新手建議先從「即用指令」上手，熟悉後再試「專屬助理」。</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;">
+      <div style="border:1px solid #E3E3E1;border-radius:14px;padding:20px 22px;background:#FFFFFF;">
+        <div style="display:inline-flex;align-items:center;gap:6px;background:#1F5DA814;border-radius:999px;padding:5px 12px;margin-bottom:12px;"><span style="width:7px;height:7px;border-radius:2px;background:#1F5DA8;"></span><span style="font-size:13px;font-weight:800;color:#1B4E8C;">即用指令</span></div>
+        <div style="font-size:13px;color:#9A9A9A;font-weight:600;margin-bottom:6px;">＝ 複製貼上，馬上用</div>
+        <p style="margin:0;font-size:13.5px;line-height:1.65;color:#3F3F3F;">像借一張寫好的點菜單，貼進對話框、填上你的狀況就能快速產出內容。最適合單一任務、快速備課或者討論發想靈感、想要一份草稿的時候。</p>
+      </div>
+      <div style="border:1px solid #E3E3E1;border-radius:14px;padding:20px 22px;background:#FFFFFF;">
+        <div style="display:inline-flex;align-items:center;gap:6px;background:#3A5E8C14;border-radius:999px;padding:5px 12px;margin-bottom:12px;"><span style="width:7px;height:7px;border-radius:2px;background:#3A5E8C;"></span><span style="font-size:13px;font-weight:800;color:#33517A;">專屬助理</span></div>
+        <div style="font-size:13px;color:#9A9A9A;font-weight:600;margin-bottom:6px;">＝ 設定一次，長期幫你</div>
+        <p style="margin:0;font-size:13.5px;line-height:1.65;color:#3F3F3F;">像請一位固定助理，設定一次，之後每次找它都記得自己的角色、任務還有參考資料。適合會一直重複做的事（每單元教案設計、出考卷；特定風格圖片產生器、通知單產生器等）。在不同工具名字不同，例如&nbsp;Gemini 叫「Gem」、ChatGPT 叫「GPT」等。</p>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <h3 style="font-size:18px;font-weight:800;color:#2C2C2C;margin:0 0 6px;">四種產出類型</h3>
+    <p style="font-size:14px;line-height:1.6;color:#888888;margin:0 0 14px;">卡片右上另標示這則指令會幫你做出什麼，方便你依需求快速挑選。</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;">
+      <div style="border:1px solid #E3E3E1;border-radius:12px;padding:15px 16px;background:#FFFFFF;"><div style="display:inline-flex;align-items:center;gap:7px;margin-bottom:6px;"><span style="width:8px;height:8px;border-radius:2px;background:#3A5E8C;"></span><span style="font-size:14px;font-weight:800;color:#33517A;">教學設計</span></div><div style="font-size:13px;line-height:1.55;color:#666666;">課程流程、提問與評量的規劃建議。</div></div>
+      <div style="border:1px solid #E3E3E1;border-radius:12px;padding:15px 16px;background:#FFFFFF;"><div style="display:inline-flex;align-items:center;gap:7px;margin-bottom:6px;"><span style="width:8px;height:8px;border-radius:2px;background:#2E7D8A;"></span><span style="font-size:14px;font-weight:800;color:#2A727E;">互動教具</span></div><div style="font-size:13px;line-height:1.55;color:#666666;">可操作的網頁小工具，如翻牌、隨機點名。</div></div>
+      <div style="border:1px solid #E3E3E1;border-radius:12px;padding:15px 16px;background:#FFFFFF;"><div style="display:inline-flex;align-items:center;gap:7px;margin-bottom:6px;"><span style="width:8px;height:8px;border-radius:2px;background:#9A6B1E;"></span><span style="font-size:14px;font-weight:800;color:#8A6019;">AI 生圖</span></div><div style="font-size:13px;line-height:1.55;color:#666666;">請 AI 直接畫出教學插圖或佈置素材。</div></div>
+      <div style="border:1px solid #E3E3E1;border-radius:12px;padding:15px 16px;background:#FFFFFF;"><div style="display:inline-flex;align-items:center;gap:7px;margin-bottom:6px;"><span style="width:8px;height:8px;border-radius:2px;background:#4F7A2E;"></span><span style="font-size:14px;font-weight:800;color:#47702A;">可印教材</span></div><div style="font-size:13px;line-height:1.55;color:#666666;">一頁可直接列印的學習單、字卡或練習卡。</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="sec-prompt" style="margin-bottom:64px;scroll-margin-top:16px;">
+  <div style="display:flex;align-items:center;gap:11px;margin-bottom:14px;">
+    <span style="width:22px;height:2px;background:#1F5DA8;"></span>
+    <span style="font-size:13px;font-weight:700;letter-spacing:.18em;color:#1F5DA8;">指令觀念</span>
+  </div>
+  <h2 style="font-size:clamp(26px,3.6vw,34px);font-weight:900;color:#232323;margin:0 0 12px;letter-spacing:-.01em;">寫好一個指令的基本觀念</h2>
+  <p style="font-size: 16px; line-height: 1.7; color: #575757; margin: 0 0 28px; max-width: 800px">不必是工程師也能寫出好指令。把握以下的「要素」與「框架」，就能寫出清楚、好用的指令。</p>
+
+  <div style="margin-bottom:30px;">
+    <h3 style="font-size:18px;font-weight:800;color:#2C2C2C;margin:0 0 14px;">一、一個好指令的四個要素</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:12px;">
+      <div style="border:1px solid #E3E3E1;border-radius:12px;padding:16px 18px;background:#FFFFFF;"><div style="font-size:14px;font-weight:800;color:#1F5DA8;margin-bottom:5px;">角色 Persona</div><div style="font-size:13.5px;line-height:1.55;color:#666666;">請 AI 扮演誰（如：國小自然老師）。</div></div>
+      <div style="border:1px solid #E3E3E1;border-radius:12px;padding:16px 18px;background:#FFFFFF;"><div style="font-size:14px;font-weight:800;color:#1F5DA8;margin-bottom:5px;">任務 Task</div><div style="font-size:13.5px;line-height:1.55;color:#666666;">具體要它「做什麼」。</div></div>
+      <div style="border:1px solid #E3E3E1;border-radius:12px;padding:16px 18px;background:#FFFFFF;"><div style="font-size:14px;font-weight:800;color:#1F5DA8;margin-bottom:5px;">脈絡 Context</div><div style="font-size:13.5px;line-height:1.55;color:#666666;">年段、程度、限制與背景資訊。</div></div>
+      <div style="border:1px solid #E3E3E1;border-radius:12px;padding:16px 18px;background:#FFFFFF;"><div style="font-size:14px;font-weight:800;color:#1F5DA8;margin-bottom:5px;">格式 Format</div><div style="font-size:13.5px;line-height:1.55;color:#666666;">希望輸出的長相（表格、條列、字數）。</div></div>
+    </div>
+  </div>
+
+  <div style="margin-bottom:30px;">
+    <h3 style="font-size:18px;font-weight:800;color:#2C2C2C;margin:0 0 14px;">二、兩個好記的指令框架</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;">
+      <div style="border:1px solid #E3E3E1;border-radius:14px;padding:20px 22px;background:#FFFFFF;">
+        <div style="display:inline-block;font-size:13px;font-weight:900;letter-spacing:.08em;color:#fff;background:#1F5DA8;border-radius:7px;padding:4px 10px;margin-bottom:12px;">PTCF</div>
+        <div style="font-size:14.5px;line-height:1.9;color:#3F3F3F;"><strong>P</strong>ersona 角色 · <strong>T</strong>ask 任務 · <strong>C</strong>ontext 脈絡 · <strong>F</strong>ormat 格式</div>
+        <div style="font-size:13px;line-height:1.6;color:#888888;margin-top:8px;">最通用的萬用框架，適合基礎快速對話或一次性的單一任務。</div>
+      </div>
+      <div style="border:1px solid #E3E3E1;border-radius:14px;padding:20px 22px;background:#FFFFFF;">
+        <div style="display:inline-block;font-size:13px;font-weight:900;letter-spacing:.08em;color:#fff;background:#3A5E8C;border-radius:7px;padding:4px 10px;margin-bottom:12px;">PARTS</div>
+        
+        <div style="font-size:14.5px;line-height:1.9;color:#3F3F3F;"><strong>P</strong>ersona 角色 · <strong>A</strong>ct 行動 · <strong>R</strong>ecipient 受眾 · <strong>T</strong>heme 主題/風格 · <b>S</b>tructure 結構&nbsp;</div><div style="font-size:13px;line-height:1.6;color:#888888;margin-top:8px;">架構更完整，適合更精確規劃，細節更完整的情境需求，善用 AI 高級推理能力。</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<section id="sec-model" style="margin-bottom:64px;scroll-margin-top:16px;">
+  <div style="display:flex;align-items:center;gap:11px;margin-bottom:14px;">
+    <span style="width:22px;height:2px;background:#1F5DA8;"></span>
+    <span style="font-size:13px;font-weight:700;letter-spacing:.18em;color:#1F5DA8;">選對工具</span>
+  </div>
+  <h2 style="font-size:clamp(26px,3.6vw,34px);font-weight:900;color:#232323;margin:0 0 12px;letter-spacing:-.01em;">選擇適合的 AI 模型</h2>
+  <p style="font-size: 16px; line-height: 1.7; color: #575757; margin: 0 0 28px; max-width: 800px">同一則指令，用不同「等級」的模型，產出品質可能差很多。除了寫好指令，選對模型也是關鍵。</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:22px;">
+    <div style="border:1px solid #E3E3E1;border-radius:14px;padding:22px 24px;background:#FFFFFF;">
+      <div style="display:flex;align-items:center;gap:9px;margin-bottom:12px;"><span style="width:9px;height:9px;border-radius:50%;background:#1F5DA8;"></span><h4 style="margin:0;font-size:16px;font-weight:800;color:#2C2C2C;">高階模型（進階／付費版）</h4></div>
+      <p style="margin:0 0 10px;font-size:14px;line-height:1.65;color:#575757;">推理更強、指令遵循度更高、產出更完整穩定。</p>
+      <div style="font-size:13.5px;line-height:1.7;color:#666666;">適合：多步驟推理與運算、長文本與教材彙整、需要一次到位的<strong style="color:#3F3F3F;">文件／表格／簡報</strong>，以及<strong style="color:#3F3F3F;">互動工具、網頁、程式</strong>等較複雜的產出。</div>
+    </div>
+    <div style="border:1px solid #E3E3E1;border-radius:14px;padding:22px 24px;background:#FFFFFF;">
+      <div style="display:flex;align-items:center;gap:9px;margin-bottom:12px;"><span style="width:9px;height:9px;border-radius:50%;background:#969696;"></span><h4 style="margin:0;font-size:16px;font-weight:800;color:#2C2C2C;">基礎模型（免費／輕量版）</h4></div>
+      <p style="margin:0 0 10px;font-size:14px;line-height:1.65;color:#575757;">回應快、隨手可用，日常任務多半綽綽有餘。</p>
+      <div style="font-size:13.5px;line-height:1.7;color:#666666;">適合：改寫潤稿、發想點子、簡短問答、單一步驟的小任務。<strong style="color:#3F3F3F;">免費版常有用量上限</strong>，遇到複雜任務品質也較不穩定。</div>
+    </div>
+  </div>
+  <div class="callout" style="background:#FBF6EB;border:1px solid #EBDBB4;border-left:3px solid #D6A83E;border-radius:10px;padding:16px 20px;">
+    <div style="font-size:12px;font-weight:700;letter-spacing:.1em;color:#977318;margin-bottom:6px;">實用建議</div>
+    <div style="font-size:14px;line-height:1.68;color:#575757;">重要或複雜的任務（尤其是要生成文件、工具或網頁），值得斟酌切換到<strong style="color:#3F3F3F;">高階模型</strong>；若免費版碰到額度上限，可改用其他工具、待額度恢復，或把任務拆小分次進行。各家工具的模型名稱與分級不同，以你使用的平台當下說明為準。</div>
+  </div>
+</section>
+
+<section id="index-top" style="margin-bottom:64px;scroll-margin-top:16px;">
+  <div style="display:flex;align-items:center;gap:11px;margin-bottom:14px;">
+    <span style="width:22px;height:2px;background:#1F5DA8;"></span>
+    <span style="font-size:13px;font-weight:700;letter-spacing:.18em;color:#1F5DA8;">指令速查</span>
+  </div>
+  <h2 style="font-size:clamp(26px,3.6vw,34px);font-weight:900;color:#232323;margin:0 0 12px;letter-spacing:-.01em;">指令速查表</h2>
+  <p style="font-size: 16px; line-height: 1.7; color: #575757; margin: 0 0 18px; max-width: 800px">依年段快速查編號與名稱，點名稱即可跳到該指令。想依科目領域瀏覽、或查看類型與產出等完整分類，請前往最後的〈完整索引〉。</p>
+  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px;">
+    <a href="#index-full-domain" style="display:inline-flex;align-items:center;gap:7px;padding:8px 14px;border-radius:999px;border:1px solid #DBDBD8;background:#FFFFFF;text-decoration:none;font-size:13px;font-weight:700;color:#33517A;" style-hover="border-color:#3A5E8C;">完整索引 · 依科目領域 <span style="color:#9C9C9C;">↓</span></a>
+    <a href="#index-full-grade" style="display:inline-flex;align-items:center;gap:7px;padding:8px 14px;border-radius:999px;border:1px solid #DBDBD8;background:#FFFFFF;text-decoration:none;font-size:13px;font-weight:700;color:#33517A;" style-hover="border-color:#3A5E8C;">完整索引 · 依年段 <span style="color:#9C9C9C;">↓</span></a>
+  </div>
+  <sc-for list="{{ byGrade }}" as="grp" hint-placeholder-count="6">
+    <div style="margin-bottom:13px;">
+      <div style="display:flex;align-items:center;gap:9px;margin-bottom:6px;">
+        <span style="width:11px;height:11px;border-radius:50%;background:{{ grp.color }};"></span>
+        <h3 style="margin:0;font-size:17px;font-weight:800;color:#2C2C2C;">{{ grp.key }}</h3>
+        <span style="font-size:12.5px;font-weight:700;color:#9C9C9C;">{{ grp.count }} 則</span>
+      </div>
+      <div style="border:1px solid #E3E3E1;border-radius:12px;overflow:hidden;background:#FFFFFF;">
+        <sc-for list="{{ grp.items }}" as="row" hint-placeholder-count="4">
+          <div style="display:grid;grid-template-columns:44px minmax(0,1fr) 132px;align-items:center;height:38px;overflow:hidden;border-bottom:1px solid #E7E7E5;font-size:12.5px;">
+            <div style="padding:5px 12px;color:#969696;font-weight:700;font-variant-numeric:tabular-nums;">{{ row.num }}</div>
+            <div style="padding:5px 12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"><a href="{{ row.href }}" style="color:#2C2C2C;text-decoration:none;" style-hover="color:#1F5DA8;text-decoration:underline;">{{ row.name }}</a></div>
+            <div style="padding:5px 12px;display:flex;align-items:center;gap:6px;min-width:0;"><span style="width:7px;height:7px;border-radius:2px;flex:0 0 auto;background:{{ row.color }};"></span><span style="color:#575757;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ row.subject }}</span></div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </sc-for>
+</section>
+
+<section id="sec-all" style="margin-bottom:40px;scroll-margin-top:16px;">
+  <div style="display:flex;align-items:center;gap:11px;margin-bottom:14px;">
+    <span style="width:22px;height:2px;background:#1F5DA8;"></span>
+    <span style="font-size:13px;font-weight:700;letter-spacing:.18em;color:#1F5DA8;">指令內容</span>
+  </div>
+  <h2 style="font-size:clamp(26px,3.6vw,34px);font-weight:900;color:#232323;margin:0 0 12px;letter-spacing:-.01em;">教學指令全集</h2>
+  <p style="font-size:16px;line-height:1.7;color:#575757;margin:0 0 8px;max-width:680px;">依年段分章、編號依序排列；每張卡片皆可獨立複製使用，左上編號色塊代表所屬科目領域，標籤標示指令類型與產出。</p>
+</section>
+
+<sc-for list="{{ chapters }}" as="ch" hint-placeholder-count="5">
+  <div class="chapter-divider" id="{{ ch.gid }}" style="margin:14px 0 26px;padding-bottom:14px;border-bottom:2px solid {{ ch.color }};display:flex;align-items:baseline;justify-content:space-between;gap:12px;scroll-margin-top:16px;">
+    <h3 style="font-size:26px;font-weight:900;color:{{ ch.color }};margin:0;letter-spacing:-.01em;">{{ ch.key }}</h3>
+    <span style="font-size:13px;font-weight:700;color:#969696;white-space:nowrap;">{{ ch.count }} 則指令</span>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:24px;margin-bottom:52px;">
+    <sc-for list="{{ ch.cards }}" as="p" hint-placeholder-count="4">
+      <div class="prompt-card {{ p.pbClass }}" id="{{ p.anchor }}" style="border:1px solid #E3E3E1;border-radius:18px;background:#FFFFFF;padding:{{ p.cardPad }};box-shadow:0 1px 2px rgba(40,35,30,.04),0 10px 28px rgba(40,35,30,.045);scroll-margin-top:16px;">
+        <div style="display:flex;align-items:flex-start;gap:16px;">
+          <div style="flex:0 0 auto;width:46px;height:46px;border-radius:12px;background:{{ p.badgeColor }};color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;font-variant-numeric:tabular-nums;">{{ p.num }}</div>
+          <div style="flex:1;min-width:0;">
+            <h3 style="margin:0 0 5px;font-size:21px;font-weight:800;color:#232323;line-height:1.3;">{{ p.title }}</h3>
+            <p style="margin:0;font-size:14.5px;color:#747474;line-height:1.5;">{{ p.purpose }}</p>
+          </div>
+          <a href="#index-top" class="back-to-index" style="flex:0 0 auto;display:inline-flex;align-items:center;gap:5px;padding:6px 12px;border-radius:999px;border:1px solid #DBDBD8;background:#F7F7F5;color:#747474;font-size:12px;font-weight:700;text-decoration:none;white-space:nowrap;" style-hover="border-color:#1F5DA8;color:#1F5DA8;">↑ 回索引</a>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;">
+          <span style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;font-size:13px;font-weight:700;background:#ECECEA;color:#747474;"><span style="width:7px;height:7px;border-radius:2px;background:#747474;"></span>{{ p.typeLabel }}</span>
+          <span style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;font-size:13px;font-weight:600;background:#ECECEA;color:#575757;"><span style="width:7px;height:7px;border-radius:50%;background:{{ p.gradeDot }};"></span>{{ p.grade }}</span>
+          <span style="padding:6px 12px;border-radius:999px;border:1px solid #DBDBD8;color:#666666;font-size:13px;font-weight:600;">{{ p.subject }}</span>
+          <sc-if value="{{ p.hasDeliv }}" hint-placeholder-val="{{ true }}">
+            <span style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;border:1px solid {{ p.delivBorder }};background:{{ p.delivTint }};color:{{ p.delivColor }};font-size:13px;font-weight:700;"><span style="width:6px;height:6px;border-radius:2px;background:{{ p.delivColor }};"></span>{{ p.deliverable }}</span>
+          </sc-if>
+        </div>
+
+        <div style="margin-top:22px;">
+          <div style="font-size:12px;font-weight:700;letter-spacing:.12em;color:#9C9C9C;margin-bottom:8px;">使用情境</div>
+          <p style="margin:0;font-size:15px;line-height:1.7;color:#3F3F3F;">{{ p.scenario }}</p>
+        </div>
+
+        <sc-if value="{{ p.hasPrep }}" hint-placeholder-val="{{ true }}">
+          <div class="keep" style="margin-top:20px;background:{{ p.delivTint }};border:1px solid {{ p.delivBorder }};border-radius:10px;padding:13px 16px;">
+            <div style="font-size:12px;font-weight:700;letter-spacing:.1em;color:{{ p.delivColor }};margin-bottom:5px;">使用前 · 選對工具功能</div>
+            <div style="font-size:13.5px;line-height:1.62;color:#3F3F3F;">{{ p.prepText }}</div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ p.hasSetupNote }}" hint-placeholder-val="{{ true }}">
+          <div class="keep" style="margin-top:20px;background:{{ p.boxTint }};border:1px solid {{ p.boxBorder }};border-radius:10px;padding:13px 16px;">
+            <div style="font-size:12px;font-weight:700;letter-spacing:.1em;color:{{ p.badgeColor }};margin-bottom:5px;">設定位置</div>
+            <div style="font-size:13.5px;line-height:1.62;color:#3F3F3F;">{{ p.setupNote }}</div>
+          </div>
+        </sc-if>
+
+        <div class="prompt-box keep" style="margin-top:18px;border:1px solid {{ p.boxBorder }};border-radius:12px;overflow:hidden;">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 14px 10px 16px;background:{{ p.boxBg }};">
+            <span style="font-size:12px;font-weight:700;letter-spacing:.14em;color:#FFFFFFE6;">PROMPT · 可直接複製</span>
+            <button onClick="{{ p.onCopy }}" style="background:{{ p.copyBg }};color:{{ p.copyColor }};border:none;border-radius:999px;padding:6px 15px;font-size:12.5px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap;">{{ p.copyLabel }}</button>
+          </div>
+          <pre style="margin:0;padding:18px 20px;white-space:pre-wrap;word-break:break-word;background:{{ p.boxTint }};font-size:14px;line-height:1.85;color:#333333;font-family:{{ p.promptFont }};">{{ p.prompt }}</pre>
+        </div>
+
+        <sc-if value="{{ p.hasStarters }}" hint-placeholder-val="{{ true }}">
+          <div style="margin-top:20px;">
+            <div style="font-size:12px;font-weight:700;letter-spacing:.12em;color:#9C9C9C;margin-bottom:10px;">多種起手情境（擇一開場）</div>
+            <div style="display:flex;flex-direction:column;gap:9px;background:{{ p.boxTint }};border:1px solid {{ p.boxBorder }};border-radius:10px;padding:14px 16px;">
+              <sc-for list="{{ p.starterList }}" as="s" hint-placeholder-count="3">
+                <div style="display:flex;gap:10px;align-items:flex-start;"><span style="color:{{ p.badgeColor }};font-weight:900;margin-top:1px;">▸</span><span style="font-size:14px;line-height:1.6;color:#3F3F3F;">{{ s }}</span></div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ p.hasFiles }}" hint-placeholder-val="{{ true }}">
+          <div style="margin-top:20px;">
+            <div style="font-size:12px;font-weight:700;letter-spacing:.12em;color:#9C9C9C;margin-bottom:10px;">建議一併附上的檔案</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;">
+              <sc-for list="{{ p.fileList }}" as="f" hint-placeholder-count="2">
+                <span style="display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border-radius:9px;background:#ECECEA;border:1px solid #E3E3E1;font-size:13.5px;color:#3F3F3F;font-weight:500;"><span style="color:#9C9C9C;font-weight:900;">▤</span>{{ f }}</span>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ p.hasSteps }}" hint-placeholder-val="{{ true }}">
+          <div style="margin-top:22px;">
+            <div style="font-size:12px;font-weight:700;letter-spacing:.12em;color:#9C9C9C;margin-bottom:10px;">操作步驟</div>
+            <div style="display:flex;flex-direction:column;gap:9px;">
+              <sc-for list="{{ p.stepList }}" as="step" hint-placeholder-count="3">
+                <div style="display:flex;gap:11px;align-items:flex-start;">
+                  <span style="flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:#1F5DA814;color:#1F5DA8;font-size:12.5px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px;">{{ step.n }}</span>
+                  <span style="font-size:14.5px;line-height:1.65;color:#3F3F3F;">{{ step.text }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ p.hasOutput }}" hint-placeholder-val="{{ true }}">
+          <div style="margin-top:22px;">
+            <div style="font-size:12px;font-weight:700;letter-spacing:.12em;color:#9C9C9C;margin-bottom:8px;">預期產出範例</div>
+            <div style="background:#F7F7F5;border:1px solid #E6E6E3;border-radius:10px;padding:14px 16px;font-size:14.5px;line-height:1.7;color:#3F3F3F;">{{ p.output }}</div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ p.hasExt }}" hint-placeholder-val="{{ true }}">
+          <div style="margin-top:22px;">
+            <div style="font-size:12px;font-weight:700;letter-spacing:.12em;color:#9C9C9C;margin-bottom:10px;">延伸變化</div>
+            <div style="display:flex;flex-direction:column;gap:7px;">
+              <sc-for list="{{ p.extList }}" as="ext" hint-placeholder-count="2">
+                <div style="display:flex;gap:10px;align-items:flex-start;"><span style="color:{{ p.badgeColor }};font-weight:900;margin-top:1px;">+</span><span style="font-size:14.5px;line-height:1.6;color:#3F3F3F;">{{ ext }}</span></div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ p.hasTip }}" hint-placeholder-val="{{ true }}">
+          <div class="callout" style="margin-top:22px;background:#FBF6EB;border:1px solid #EBDBB4;border-left:3px solid #D6A83E;border-radius:8px;padding:13px 16px;">
+            <div style="font-size:12px;font-weight:700;letter-spacing:.12em;color:#977318;margin-bottom:5px;">小提醒</div>
+            <div style="font-size:14.5px;line-height:1.7;color:#575757;">{{ p.tip }}</div>
+          </div>
+        </sc-if>
+      </div>
+    </sc-for>
+  </div>
+</sc-for>
+
+<section id="sec-resources" style="margin-bottom:24px;scroll-margin-top:16px;">
+  <div style="display:flex;align-items:center;gap:11px;margin-bottom:14px;">
+    <span style="width:22px;height:2px;background:#1F5DA8;"></span>
+    <span style="font-size:13px;font-weight:700;letter-spacing:.18em;color:#1F5DA8;">延伸資源</span>
+  </div>
+  <h2 style="font-size:clamp(26px,3.6vw,34px);font-weight:900;color:#232323;margin:0 0 12px;letter-spacing:-.01em;">國內外教育指令庫與延伸資源</h2>
+  <p style="font-size:16px;line-height:1.7;color:#575757;margin:0 0 20px;max-width:680px;">延伸推薦國內外公開分享的指令庫網站與相關資源，可搭配本指令包一起使用。</p>
+  <sc-if value="{{ hasResNote }}" hint-placeholder-val="{{ true }}">
+    <div class="callout" style="margin-bottom:34px;background:#FBF6EB;border:1px solid #EBDBB4;border-left:3px solid #D6A83E;border-radius:10px;padding:14px 18px;display:flex;gap:10px;align-items:flex-start;">
+      <span style="color:#D6A83E;font-weight:900;margin-top:1px;">!</span>
+      <span style="font-size:14px;line-height:1.62;color:#575757;"><strong style="color:#3F3F3F;">小提醒：</strong>{{ resNote }}</span>
+    </div>
+  </sc-if>
+
+  <sc-for list="{{ resGroups }}" as="g" hint-placeholder-count="3">
+    <div style="margin-bottom:34px;">
+      <h3 style="font-size:19px;font-weight:900;color:#232323;margin:0 0 4px;letter-spacing:-.01em;">{{ g.title }}</h3>
+      <p style="font-size:14px;line-height:1.6;color:#888888;margin:0 0 16px;max-width:680px;">{{ g.subtitle }}</p>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="3">
+          <div class="keep" style="border:1px solid #E3E3E1;border-radius:13px;padding:18px 20px;background:#FFFFFF;">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin-bottom:7px;">
+              <a href="{{ it.url }}" target="_blank" rel="noopener" style="font-size:16px;font-weight:800;color:#232323;text-decoration:none;border-bottom:2px solid {{ it.accent }};line-height:1.35;">{{ it.name }}</a>
+              <sc-for list="{{ it.tagList }}" as="t" hint-placeholder-count="1">
+                <span style="padding:3px 9px;border-radius:999px;font-size:11.5px;font-weight:700;background:{{ t.bg }};color:{{ t.fg }};">{{ t.label }}</span>
+              </sc-for>
+            </div>
+            <p style="margin:0 0 9px;font-size:14px;line-height:1.62;color:#666666;">{{ it.desc }}</p>
+            <a href="{{ it.url }}" target="_blank" rel="noopener" style="display:inline-block;font-size:12.5px;color:#3A5E8C;text-decoration:none;word-break:break-all;line-height:1.4;">{{ it.displayUrl }} ↗</a>
+            <sc-if value="{{ it.hasSublinks }}" hint-placeholder-val="{{ true }}">
+              <div style="margin-top:11px;padding-top:11px;border-top:1px dashed #E3E3E1;display:flex;flex-direction:column;gap:8px;">
+                <sc-for list="{{ it.subList }}" as="s" hint-placeholder-count="2">
+                  <a href="{{ s.url }}" target="_blank" rel="noopener" style="display:flex;gap:8px;align-items:baseline;font-size:13px;color:#3F3F3F;text-decoration:none;"><span style="color:#9C9C9C;font-weight:900;">└</span><span style="border-bottom:1px solid #C9C0B2;">{{ s.label }}</span></a>
+                </sc-for>
+              </div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </sc-for>
+</section>
+
+<section id="index-full" style="margin-bottom:56px;scroll-margin-top:16px;">
+  <div style="display:flex;align-items:center;gap:11px;margin-bottom:14px;">
+    <span style="width:22px;height:2px;background:#1F5DA8;"></span>
+    <span style="font-size:13px;font-weight:700;letter-spacing:.18em;color:#1F5DA8;">附錄一 · 完整索引</span>
+  </div>
+  <h2 style="font-size:clamp(26px,3.6vw,34px);font-weight:900;color:#232323;margin:0 0 12px;letter-spacing:-.01em;">完整索引</h2>
+  <p style="font-size:16px;line-height:1.7;color:#575757;margin:0 0 28px;max-width:680px;">含指令類型與產出的完整分類，可交叉查找。點名稱即可跳到該指令。</p>
+
+  <div id="index-full-domain" style="margin-bottom:40px;scroll-margin-top:16px;">
+    <h3 style="font-size:19px;font-weight:900;color:#232323;margin:0 0 16px;letter-spacing:-.01em;">依科目領域</h3>
+    <sc-for list="{{ byDomain }}" as="grp" hint-placeholder-count="10">
+      <div style="margin-bottom:13px;">
+        <div style="display:flex;align-items:center;gap:9px;margin-bottom:6px;">
+          <span style="width:11px;height:11px;border-radius:3px;background:{{ grp.color }};"></span>
+          <h3 style="margin:0;font-size:16px;font-weight:800;color:{{ grp.color }};">{{ grp.key }}</h3>
+          <span style="font-size:12.5px;font-weight:700;color:#9C9C9C;">{{ grp.count }} 則</span>
+        </div>
+        <div style="border:1px solid #E3E3E1;border-radius:12px;overflow:hidden;background:#FFFFFF;">
+          <sc-for list="{{ grp.items }}" as="row" hint-placeholder-count="4">
+            <div style="display:grid;grid-template-columns:44px minmax(0,1fr) 120px 82px 96px;align-items:center;height:40px;overflow:hidden;border-bottom:1px solid #E7E7E5;font-size:12.5px;">
+              <div style="padding:5px 12px;color:#969696;font-weight:700;font-variant-numeric:tabular-nums;">{{ row.num }}</div>
+              <div style="padding:5px 12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"><a href="{{ row.href }}" style="color:#2C2C2C;text-decoration:none;" style-hover="color:#1F5DA8;text-decoration:underline;">{{ row.name }}</a></div>
+              <div style="padding:5px 12px;display:flex;align-items:center;gap:6px;min-width:0;"><span style="width:7px;height:7px;border-radius:50%;flex:0 0 auto;background:{{ row.gradeDot }};"></span><span style="color:#575757;white-space:nowrap;">{{ row.grade }}</span></div>
+              <div style="padding:5px 12px;color:#888888;font-size:12px;white-space:nowrap;">{{ row.typeLabel }}</div>
+              <div style="padding:5px 12px;min-width:0;"><span style="display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:700;color:{{ row.delivColor }};white-space:nowrap;"><span style="width:6px;height:6px;border-radius:2px;flex:0 0 auto;background:{{ row.delivColor }};"></span>{{ row.deliv }}</span></div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+
+  <div id="index-full-grade" style="scroll-margin-top:16px;">
+    <h3 style="font-size:19px;font-weight:900;color:#232323;margin:0 0 16px;letter-spacing:-.01em;">依年段</h3>
+    <sc-for list="{{ byGrade }}" as="grp" hint-placeholder-count="6">
+      <div style="margin-bottom:13px;">
+        <div style="display:flex;align-items:center;gap:9px;margin-bottom:6px;">
+          <span style="width:11px;height:11px;border-radius:50%;background:{{ grp.color }};"></span>
+          <h3 style="margin:0;font-size:16px;font-weight:800;color:#2C2C2C;">{{ grp.key }}</h3>
+          <span style="font-size:12.5px;font-weight:700;color:#9C9C9C;">{{ grp.count }} 則</span>
+        </div>
+        <div style="border:1px solid #E3E3E1;border-radius:12px;overflow:hidden;background:#FFFFFF;">
+          <sc-for list="{{ grp.items }}" as="row" hint-placeholder-count="4">
+            <div style="display:grid;grid-template-columns:44px minmax(0,1fr) 120px 82px 96px;align-items:center;height:40px;overflow:hidden;border-bottom:1px solid #E7E7E5;font-size:12.5px;">
+              <div style="padding:5px 12px;color:#969696;font-weight:700;font-variant-numeric:tabular-nums;">{{ row.num }}</div>
+              <div style="padding:5px 12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"><a href="{{ row.href }}" style="color:#2C2C2C;text-decoration:none;" style-hover="color:#1F5DA8;text-decoration:underline;">{{ row.name }}</a></div>
+              <div style="padding:5px 12px;display:flex;align-items:center;gap:6px;min-width:0;"><span style="width:7px;height:7px;border-radius:2px;flex:0 0 auto;background:{{ row.color }};"></span><span style="color:#575757;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ row.subject }}</span></div>
+              <div style="padding:5px 12px;color:#888888;font-size:12px;white-space:nowrap;">{{ row.typeLabel }}</div>
+              <div style="padding:5px 12px;min-width:0;"><span style="display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:700;color:{{ row.delivColor }};white-space:nowrap;"><span style="width:6px;height:6px;border-radius:2px;flex:0 0 auto;background:{{ row.delivColor }};"></span>{{ row.deliv }}</span></div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="margin-top:22px;"><a href="#toc" style="display:inline-flex;align-items:center;gap:5px;padding:8px 14px;border-radius:999px;border:1px solid #DBDBD8;background:#F7F7F5;color:#747474;font-size:12.5px;font-weight:700;text-decoration:none;" style-hover="border-color:#1F5DA8;color:#1F5DA8;">↑ 回目錄</a></div>
+</section>
+
+<section id="sec-skill" style="margin-bottom:56px;scroll-margin-top:16px;">
+  <div style="display:flex;align-items:center;gap:11px;margin-bottom:14px;">
+    <span style="width:22px;height:2px;background:#1F5DA8;"></span>
+    <span style="font-size:13px;font-weight:700;letter-spacing:.18em;color:#1F5DA8;">附錄二 · 進階應用</span>
+  </div>
+  <h2 style="font-size:clamp(26px,3.6vw,34px);font-weight:900;color:#232323;margin:0 0 12px;letter-spacing:-.01em;">進階：Skill 架構（檔案代理）</h2>
+  <p style="font-size:16px;line-height:1.75;color:#575757;margin:0 0 10px;max-width:800px;">前面的「即用指令」和「專屬助理」都在<strong>聊天視窗</strong>裡用。Skill 更進一步：它是一個放在你電腦上的<strong>資料夾</strong>，裡面寫好一份工作說明（<code style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;background:#EFECE6;padding:1px 6px;border-radius:5px;">SKILL.md</code>），AI 代理就能<strong>讀取你指定資料夾裡的檔案、批次處理、再把結果檔案寫回電腦</strong>——例如一次批改整包作業、把整學期教材整理成計畫。設定一次，之後每次呼叫都照同一套流程做。</p>
+  <div style="display:flex;gap:12px;align-items:flex-start;background:#B9741A0F;border:1px solid #B9741A33;border-left:3px solid #B9741A;border-radius:10px;padding:14px 17px;margin:0 0 30px;max-width:800px;">
+    <span style="flex:0 0 auto;font-size:18px;">⚠️</span>
+    <span style="font-size:14px;line-height:1.65;color:#3F3F3F;">Skill 需要<strong>桌面版的代理工具</strong>（能讀寫你電腦檔案的 <strong>Claude Code</strong> 或 <strong>OpenAI Codex</strong>），<strong>一般 ChatGPT 聊天、Gemini 的 Gem 做不到</strong>讀取你電腦的資料夾路徑。這區屬於進階，建議熟悉前面兩種類型後再嘗試，並先拿<strong>測試資料夾</strong>試跑、檢查產出無誤再用於正式資料。</span>
+  </div>
+
+  <h3 style="font-size:18px;font-weight:800;color:#2C2C2C;margin:0 0 14px;">怎麼開始（三步）</h3>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-bottom:20px;">
+    <div style="border:1px solid #E3E3E1;border-radius:14px;padding:18px 20px;background:#FFFFFF;">
+      <div style="display:flex;align-items:center;gap:9px;margin-bottom:8px;"><span style="flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:#1F5DA8;color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;">1</span><span style="font-size:15px;font-weight:800;color:#2C2C2C;">安裝代理工具</span></div>
+      <p style="margin:0;font-size:13.5px;line-height:1.65;color:#3F3F3F;">在電腦安裝 <strong>Claude Code</strong> 或 <strong>OpenAI Codex</strong>（在終端機／桌面 App 執行，能存取本機檔案）。開一個資料夾當你的工作區。</p>
+    </div>
+    <div style="border:1px solid #E3E3E1;border-radius:14px;padding:18px 20px;background:#FFFFFF;">
+      <div style="display:flex;align-items:center;gap:9px;margin-bottom:8px;"><span style="flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:#1F5DA8;color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;">2</span><span style="font-size:15px;font-weight:800;color:#2C2C2C;">建立一個 skill</span></div>
+      <p style="margin:0;font-size:13.5px;line-height:1.65;color:#3F3F3F;">在 skill 資料夾裡建一個子資料夾（例如 <code style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;background:#EFECE6;padding:1px 5px;border-radius:5px;">grade-essays/</code>），裡面放一個檔名固定為 <code style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;background:#EFECE6;padding:1px 5px;border-radius:5px;">SKILL.md</code> 的檔案。</p>
+    </div>
+    <div style="border:1px solid #E3E3E1;border-radius:14px;padding:18px 20px;background:#FFFFFF;">
+      <div style="display:flex;align-items:center;gap:9px;margin-bottom:8px;"><span style="flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:#1F5DA8;color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;">3</span><span style="font-size:15px;font-weight:800;color:#2C2C2C;">寫內容並呼叫</span></div>
+      <p style="margin:0;font-size:13.5px;line-height:1.65;color:#3F3F3F;">SKILL.md 開頭用 <code style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;background:#EFECE6;padding:1px 5px;border-radius:5px;">--- name / description ---</code> 標頭，下面寫步驟。之後在工具裡打 <code style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;background:#EFECE6;padding:1px 5px;border-radius:5px;">/skills</code> 或用 <code style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;background:#EFECE6;padding:1px 5px;border-radius:5px;">$名稱</code> 呼叫，或直接描述任務讓它自動判斷。</p>
+    </div>
+  </div>
+  <div style="display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.6;color:#747474;margin-bottom:36px;max-width:800px;">
+    <span style="flex:0 0 auto;color:#1F5DA8;font-weight:900;">ℹ</span>
+    <span>放檔位置：Claude Code 用 <code style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;background:#EFECE6;padding:1px 5px;border-radius:5px;">~/.claude/skills/</code>、Codex 用 <code style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;background:#EFECE6;padding:1px 5px;border-radius:5px;">~/.codex/skills/</code>（放專案內則用 <code style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;background:#EFECE6;padding:1px 5px;border-radius:5px;">.claude/skills/</code>／<code style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;background:#EFECE6;padding:1px 5px;border-radius:5px;">.codex/skills/</code>）。<strong>SKILL.md 的格式兩邊共通</strong>，同一個資料夾可跨工具共用，只差放的位置不同。</span>
+  </div>
+
+  <h3 style="font-size:18px;font-weight:800;color:#2C2C2C;margin:0 0 16px;">四個常用範例</h3>
+  <div style="display:flex;flex-direction:column;gap:20px;">
+
+    <div class="keep" style="border:1px solid #E3E3E1;border-radius:18px;background:#FFFFFF;padding:24px 26px;box-shadow:0 1px 2px rgba(40,35,30,.04),0 10px 28px rgba(40,35,30,.05);">
+      <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:8px;">
+        <span style="font-size:12px;font-weight:900;letter-spacing:.06em;color:#fff;background:#1F5DA8;border-radius:6px;padding:3px 9px;">SKILL</span>
+        <h4 style="margin:0;font-size:20px;font-weight:900;color:#232323;">整包作業批改</h4>
+        <code style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;color:#8A6019;background:#EFE7D8;padding:2px 8px;border-radius:6px;">grade-essays</code>
+      </div>
+      <p style="margin:0 0 14px;font-size:14.5px;line-height:1.6;color:#575757;">指向一個裝滿學生作文／作業的資料夾，依你的評分規準逐份批改，每份輸出一個回饋檔，最後彙整全班常見問題。</p>
+      <pre style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;line-height:1.65;color:#2C2C2C;background:#F6F4EF;border:1px solid #E3E3E1;border-radius:10px;padding:15px 17px;margin:0 0 12px;white-space:pre-wrap;overflow-x:auto;">---
+name: grade-essays
+description: 依老師的評分規準，批改一個資料夾裡的學生作文，逐份輸出回饋。當老師要批改整批作業時使用。
+---
+# 批改作文
+1. 讀取 essays/ 資料夾裡每一份 .docx 或 .txt。
+2. 依 rubric.md 的評分規準逐份評分。
+3. 每份輸出一個回饋檔到 feedback/：亮點、一個具體建議、鼓勵的話。
+4. 最後彙整全班常見問題成 summary.md。</pre>
+      <div style="font-size:13.5px;line-height:1.6;color:#3F3F3F;"><strong style="color:#1B4E8C;">怎麼用：</strong>把作文放進 <code style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;background:#EFECE6;padding:1px 5px;border-radius:5px;">essays/</code>、把你的規準寫成 <code style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;background:#EFECE6;padding:1px 5px;border-radius:5px;">rubric.md</code>，然後說：「用 grade-essays 批改 essays 資料夾」。</div>
+    </div>
+
+    <div class="keep" style="border:1px solid #E3E3E1;border-radius:18px;background:#FFFFFF;padding:24px 26px;box-shadow:0 1px 2px rgba(40,35,30,.04),0 10px 28px rgba(40,35,30,.05);">
+      <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:8px;">
+        <span style="font-size:12px;font-weight:900;letter-spacing:.06em;color:#fff;background:#1F5DA8;border-radius:6px;padding:3px 9px;">SKILL</span>
+        <h4 style="margin:0;font-size:20px;font-weight:900;color:#232323;">從課程講義出考卷</h4>
+        <code style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;color:#8A6019;background:#EFE7D8;padding:2px 8px;border-radius:6px;">make-exam</code>
+        <span style="font-size:11.5px;font-weight:800;color:#8A6019;background:#F4E3C6;border:1px solid #E4CE9E;border-radius:999px;padding:2px 10px;">豐富版示範</span>
+      </div>
+      <p style="margin:0 0 14px;font-size:14.5px;line-height:1.6;color:#575757;">同樣是出考卷，這個版本把規範拆成 <code style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;background:#EFECE6;padding:1px 5px;border-radius:5px;">references/</code> 參考檔、加上品質確認清單，AI 出題更準、更一致。以下都是公開的 SKILL.md 通用寫法。</p>
+      <div style="font-size:12px;font-weight:700;letter-spacing:.06em;color:#9C9C9C;margin-bottom:6px;">資料夾結構</div>
+      <pre style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;line-height:1.65;color:#2C2C2C;background:#F6F4EF;border:1px solid #E3E3E1;border-radius:10px;padding:15px 17px;margin:0 0 14px;white-space:pre;overflow-x:auto;">make-exam/
+├── SKILL.md
+├── references/
+│   ├── question-types.md   # 各題型的出題原則與配分
+│   └── exam-format.md      # 考卷版面與作答說明範本
+└── scripts/
+    └── build_exam.py       # 選用：把考卷排版成 Word/PDF</pre>
+      <div style="font-size:12px;font-weight:700;letter-spacing:.06em;color:#9C9C9C;margin-bottom:6px;">SKILL.md</div>
+      <pre style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;line-height:1.65;color:#2C2C2C;background:#F6F4EF;border:1px solid #E3E3E1;border-radius:10px;padding:15px 17px;margin:0 0 12px;white-space:pre-wrap;overflow-x:auto;">---
+name: make-exam
+description: 讀取課程講義資料夾，依指定範圍與題型產生考卷與解答。當老師要出考卷、練習卷或隨堂測驗時使用。
+---
+# 出考卷
+
+## 開始前先讀
+- references/question-types.md：各題型的出題原則與配分
+- references/exam-format.md：考卷版面與作答說明範本
+
+## 步驟
+1. 讀取 materials/ 裡的講義（.pdf／.docx／.md），整理可出題的重點。
+2. 向老師確認：範圍、總題數、題型比例、難易分布。
+3. 依 references 的規範出題；題目只根據講義，不超綱。
+4. 產出 exam.md 與 answer_key.md 到 output/。
+
+## 品質確認清單
+- [ ] 每題都能在講義中找到依據，未超綱
+- [ ] 題型比例與題數符合指定
+- [ ] 每題標明配分，總分加總正確
+- [ ] 解答完整，附必要解題說明
+- [ ] 版面依 exam-format.md，含作答說明與留白</pre>
+      <div style="font-size:13.5px;line-height:1.6;color:#3F3F3F;"><strong style="color:#1B4E8C;">怎麼用：</strong>把講義放進 <code style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;background:#EFECE6;padding:1px 5px;border-radius:5px;">materials/</code>，說：「用 make-exam 出一份第 3-4 章、20 題的考卷」。</div>
+    </div>
+
+    <div class="keep" style="border:1px solid #E3E3E1;border-radius:18px;background:#FFFFFF;padding:24px 26px;box-shadow:0 1px 2px rgba(40,35,30,.04),0 10px 28px rgba(40,35,30,.05);">
+      <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:8px;">
+        <span style="font-size:12px;font-weight:900;letter-spacing:.06em;color:#fff;background:#1F5DA8;border-radius:6px;padding:3px 9px;">SKILL</span>
+        <h4 style="margin:0;font-size:20px;font-weight:900;color:#232323;">學期資料夾整理成教學計畫</h4>
+        <code style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;color:#8A6019;background:#EFE7D8;padding:2px 8px;border-radius:6px;">build-syllabus</code>
+      </div>
+      <p style="margin:0 0 14px;font-size:14.5px;line-height:1.6;color:#575757;">掃描一學期散落的教案、投影片、講義，依週次或單元歸類，彙整成一份教學進度表，並標出缺漏。</p>
+      <pre style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;line-height:1.65;color:#2C2C2C;background:#F6F4EF;border:1px solid #E3E3E1;border-radius:10px;padding:15px 17px;margin:0 0 12px;white-space:pre-wrap;overflow-x:auto;">---
+name: build-syllabus
+description: 掃描一學期散落的教案與講義資料夾，彙整成一份教學進度表／課程計畫。整理學期教學計畫時使用。
+---
+# 整理教學計畫
+1. 掃描 semester/ 裡所有教案、投影片、講義。
+2. 依週次或單元歸類，抓出每單元的目標與活動。
+3. 產生 syllabus.md：週次、單元、學習目標、教學活動、評量。
+4. 標出缺漏（例如某週沒有評量），提醒老師補。</pre>
+      <div style="font-size:13.5px;line-height:1.6;color:#3F3F3F;"><strong style="color:#1B4E8C;">怎麼用：</strong>把整學期檔案丟進 <code style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;background:#EFECE6;padding:1px 5px;border-radius:5px;">semester/</code>，說：「用 build-syllabus 整理成 18 週進度表」。</div>
+    </div>
+
+    <div class="keep" style="border:1px solid #E3E3E1;border-radius:18px;background:#FFFFFF;padding:24px 26px;box-shadow:0 1px 2px rgba(40,35,30,.04),0 10px 28px rgba(40,35,30,.05);">
+      <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:8px;">
+        <span style="font-size:12px;font-weight:900;letter-spacing:.06em;color:#fff;background:#1F5DA8;border-radius:6px;padding:3px 9px;">SKILL</span>
+        <h4 style="margin:0;font-size:20px;font-weight:900;color:#232323;">從教學資料做簡報</h4>
+        <code style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;color:#8A6019;background:#EFE7D8;padding:2px 8px;border-radius:6px;">make-slides</code>
+      </div>
+      <p style="margin:0 0 14px;font-size:14.5px;line-height:1.6;color:#575757;">讀取教案或講義，拆成一頁一頁的投影片內容，並在備註寫給老師的口說提示，可直接貼進簡報工具。</p>
+      <pre style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;line-height:1.65;color:#2C2C2C;background:#F6F4EF;border:1px solid #E3E3E1;border-radius:10px;padding:15px 17px;margin:0 0 12px;white-space:pre-wrap;overflow-x:auto;">---
+name: make-slides
+description: 讀取教學資料，產生一份教學簡報大綱與內容。要把教材變成上課投影片時使用。
+---
+# 產生教學簡報
+1. 讀取 lesson/ 裡的教案或講義。
+2. 拆成投影片：標題、學習目標、每個重點一頁、活動頁、總結。
+3. 產生 slides.md（每張以 --- 分頁），可貼進簡報工具或轉成 .pptx。
+4. 每頁精簡條列，並在備註寫給老師的口說提示。</pre>
+      <div style="font-size:13.5px;line-height:1.6;color:#3F3F3F;"><strong style="color:#1B4E8C;">怎麼用：</strong>把教材放進 <code style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;background:#EFECE6;padding:1px 5px;border-radius:5px;">lesson/</code>，說：「用 make-slides 做一份 12 頁的單元簡報」。</div>
+    </div>
+
+  </div>
+
+  <div style="margin-top:32px;border:1px solid #E3E3E1;border-radius:16px;background:#F7F9FC;padding:24px 26px;">
+    <h3 style="font-size:17px;font-weight:900;color:#1B4E8C;margin:0 0 4px;">把 Skill 寫得更精準的 5 個技巧</h3>
+    <p style="font-size:13px;line-height:1.6;color:#888888;margin:0 0 16px;">前四個範例是精簡入門；想讓產出更穩定，往這五個方向補（都是公開的 SKILL.md 通用寫法）。</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;">
+      <div style="display:flex;gap:11px;align-items:flex-start;"><span style="flex:0 0 auto;width:24px;height:24px;border-radius:50%;background:#1F5DA8;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;">1</span><div style="font-size:13.5px;line-height:1.6;color:#3F3F3F;"><strong>步驟寫具體、編號</strong><br>把「做什麼」拆成 1-2-3，AI 少猜、少漏步驟。</div></div>
+      <div style="display:flex;gap:11px;align-items:flex-start;"><span style="flex:0 0 auto;width:24px;height:24px;border-radius:50%;background:#1F5DA8;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;">2</span><div style="font-size:13.5px;line-height:1.6;color:#3F3F3F;"><strong>用 references／ 放參考檔</strong><br>把格式、規範、範本放成檔案讓它讀，它就有依據、不亂編。</div></div>
+      <div style="display:flex;gap:11px;align-items:flex-start;"><span style="flex:0 0 auto;width:24px;height:24px;border-radius:50%;background:#1F5DA8;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;">3</span><div style="font-size:13.5px;line-height:1.6;color:#3F3F3F;"><strong>需要固定格式就配 scripts／</strong><br>每次都要同樣版面（如 .docx）時，用腳本產出更穩定。</div></div>
+      <div style="display:flex;gap:11px;align-items:flex-start;"><span style="flex:0 0 auto;width:24px;height:24px;border-radius:50%;background:#1F5DA8;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;">4</span><div style="font-size:13.5px;line-height:1.6;color:#3F3F3F;"><strong>結尾放品質確認清單</strong><br>用 checklist 逼它自我檢查，交件品質更一致。</div></div>
+      <div style="display:flex;gap:11px;align-items:flex-start;"><span style="flex:0 0 auto;width:24px;height:24px;border-radius:50%;background:#1F5DA8;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;">5</span><div style="font-size:13.5px;line-height:1.6;color:#3F3F3F;"><strong>description 寫清楚「何時用」</strong><br>加上觸發詞，工具才能在對的時機自動呼叫這個 skill。</div></div>
+    </div>
+  </div>
+
+  <div style="margin-top:22px;"><a href="#toc" style="display:inline-flex;align-items:center;gap:5px;padding:8px 14px;border-radius:999px;border:1px solid #DBDBD8;background:#F7F7F5;color:#747474;font-size:12.5px;font-weight:700;text-decoration:none;" style-hover="border-color:#1F5DA8;color:#1F5DA8;">↑ 回目錄</a></div>
+</section>
+
+<footer style="margin-top:48px;padding-top:24px;border-top:1px solid #E3E3E1;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:13px;color:#969696;">
+  <span>給老師的 AI 應用指令包 · 版本 v1.0</span>
+  <span>共 {{ total }} 則指令 · 歡迎補充與回饋</span>
+</footer>
+
+</td></tr></tbody>
+<tfoot><tr><td class="ftr-space"></td></tr></tfoot>
+</table>
+</main>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:960,&quot;height&quot;:1500},&quot;spacious&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;版面&quot;},&quot;gradeColorCoding&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;版面&quot;}}">
+class Component extends DCLogic {
+  state = { copiedId: null, tick: 0 };
+
+  grades = {
+    '幼教':  { dot:'#C9594B' },
+    '國小':  { dot:'#6B9B3F' },
+    '國中':  { dot:'#4F77AD' },
+    '高中':  { dot:'#7A63AD' },
+    '通用':  { dot:'#9A8F80' },
+  };
+
+  fallbackDomains = [
+    { key:'國語文', color:'#B5764A' }, { key:'英語文', color:'#2F8074' },
+    { key:'數學', color:'#3A5E8C' }, { key:'自然科學', color:'#4F7A2E' },
+    { key:'社會', color:'#9A6B1E' }, { key:'藝能領域', color:'#A24B6B' },
+    { key:'綜合活動', color:'#5E4B8C' }, { key:'科技／資訊', color:'#2E7D8A' },
+    { key:'幼教', color:'#C9594B' }, { key:'通用', color:'#6B635A' },
+  ];
+
+  gradeOrder = ['通用','幼教','國小','國中','高中'];
+
+  componentDidMount() {
+    if (!window.AIPACK) {
+      this._iv = setInterval(() => {
+        if (window.AIPACK) { clearInterval(this._iv); this.setState(s => ({ tick: s.tick + 1 })); }
+      }, 80);
+      this._to = setTimeout(() => clearInterval(this._iv), 6000);
+    }
+  }
+  componentWillUnmount() { clearInterval(this._iv); clearTimeout(this._to); }
+
+  gradeDot(g) { return (this.grades[g] || this.grades['通用']).dot; }
+
+  copy(text, id) {
+    const done = () => {
+      this.setState({ copiedId: id });
+      clearTimeout(this._t);
+      this._t = setTimeout(() => this.setState({ copiedId: null }), 1800);
+    };
+    const fb = () => {
+      const ta = document.createElement('textarea');
+      ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.focus(); ta.select();
+      try { document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(ta); done();
+    };
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, fb);
+      } else { fb(); }
+    } catch (e) { fb(); }
+  }
+
+  renderVals() {
+    const pack = window.AIPACK || {};
+    const prompts = pack.prompts || [];
+    const domainList = pack.domains || this.fallbackDomains;
+    const coding = this.props.gradeColorCoding !== false;
+    const spacious = this.props.spacious !== false;
+    const cardPad = spacious ? '30px 32px' : '24px 26px';
+    const colorOf = (k) => { const d = domainList.find(x => x.key === k); return d ? d.color : '#6B635A'; };
+
+    const TYPE = {
+      ready:     '即用指令',
+      assistant: '專屬助理',
+    };
+    const DELIV = {
+      '教學設計': '#3A5E8C',
+      '互動教具': '#2E7D8A',
+      'AI 生圖':  '#9A6B1E',
+      '可印教材': '#4F7A2E',
+    };
+    const PREP = {
+      '互動教具': '這則指令會請 AI 做出可操作的網頁小工具。請選用有「畫布／Canvas」或即時預覽的工具（ChatGPT、Claude、Gemini 皆可），做好後就能在旁邊直接試玩、調整。',
+      'AI 生圖':  '這則指令會請 AI 直接畫圖。貼上前，先在對話框開啟「生成圖片／圖片」功能，或選用支援生圖的模型（ChatGPT、Gemini 皆可直接畫圖）。',
+    };
+    const mono = "ui-monospace,SFMono-Regular,Menlo,Consolas,'Noto Sans TC',monospace";
+
+    const decorate = (p) => {
+      const dc = colorOf(p.domain);
+      const copied = this.state.copiedId === p.id;
+      const steps = p.steps || [];
+      const ext = p.extension || [];
+      const starters = p.starters || [];
+      const files = p.attachFiles || [];
+      const isMono = false;
+      const delivColor = DELIV[p.deliverable] || '#747474';
+      const prepText = (p.type !== 'assistant') ? PREP[p.deliverable] : null;
+      return {
+        hasPrep: !!prepText,
+        prepText,
+        ...p,
+        cardPad,
+        anchor: 'cmd-' + p.num,
+        pbClass: p.pageBreak === 'before' ? 'pb-before'
+               : p.pageBreak === 'avoid'  ? 'pb-avoid' : '',
+        badgeColor: dc,
+        gradeDot: coding ? this.gradeDot(p.grade) : '#B5ADA1',
+        typeLabel: TYPE[p.type] || TYPE.ready,
+        hasDeliv: !!p.deliverable,
+        delivColor,
+        delivTint: delivColor + '14',
+        delivBorder: delivColor + '3D',
+        boxBg: dc, boxBorder: dc + '33', boxTint: dc + '0D',
+        promptFont: isMono ? mono : 'inherit',
+        hasMode: !!p.mode,
+        hasSetupNote: !!p.setupNote,
+        hasStarters: starters.length > 0,
+        starterList: starters,
+        hasFiles: files.length > 0,
+        fileList: files,
+        hasSteps: steps.length > 0,
+        stepList: steps.map((t, i) => ({ n: i + 1, text: t })),
+        hasOutput: !!p.output,
+        hasExt: ext.length > 0,
+        extList: ext,
+        hasTip: !!p.tip,
+        onCopy: () => this.copy(p.prompt, p.id),
+        copyLabel: copied ? '已複製 ✓' : '複製指令',
+        copyBg: copied ? '#0E3A6B' : '#FFFFFF',
+        copyColor: copied ? '#FFFFFF' : dc,
+      };
+    };
+
+    const byNum = (a, b) => Number(a.num) - Number(b.num);
+    const chapters = this.gradeOrder
+      .map(g => ({
+        key: g, color: this.gradeDot(g), gid: 'grade-' + this.gradeOrder.indexOf(g),
+        cards: prompts.filter(p => p.grade === g).slice().sort(byNum).map(decorate),
+      }))
+      .filter(c => c.cards.length > 0)
+      .map(c => ({ ...c, count: c.cards.length }));
+
+    const gradeNav = this.gradeOrder
+      .map((g, i) => ({ key: g, gid: 'grade-' + i, color: this.gradeDot(g), count: prompts.filter(p => p.grade === g).length }))
+      .filter(x => x.count > 0);
+
+    const byDomain = domainList
+      .map(d => {
+        const items = prompts.filter(p => p.domain === d.key).slice().sort(byNum).map(p => ({
+          num: p.num, name: p.title, grade: p.grade, href: '#cmd-' + p.num,
+          gradeDot: coding ? this.gradeDot(p.grade) : '#B5ADA1',
+          typeLabel: TYPE[p.type] || TYPE.ready, scenario: p.purpose,
+          deliv: p.deliverable, delivColor: DELIV[p.deliverable] || '#747474',
+        }));
+        return { key: d.key, color: d.color, count: items.length, items };
+      })
+      .filter(g => g.count > 0);
+
+    const byGrade = this.gradeOrder
+      .map(g => {
+        const items = prompts.filter(p => p.grade === g).slice().sort(byNum).map(p => ({
+          num: p.num, name: p.title, subject: p.subject || p.domain, href: '#cmd-' + p.num,
+          color: colorOf(p.domain), typeLabel: TYPE[p.type] || TYPE.ready,
+          scenario: p.purpose,
+          deliv: p.deliverable, delivColor: DELIV[p.deliverable] || '#747474',
+        }));
+        return { key: g, color: this.gradeDot(g), count: items.length, items };
+      })
+      .filter(g => g.count > 0);
+
+    const res = pack.resources || {};
+    const TAGCOLOR = { '官方':'#2F8074', '指令庫':'#9A6B1E', '指令包':'#6B4E9E', '網站':'#3A5E8C', '社群':'#A24B6B' };
+    const tagStyle = (label) => {
+      const c = TAGCOLOR[label];
+      return c ? { label, bg: c + '1A', fg: c } : { label, bg: '#EFEAE1', fg: '#747474' };
+    };
+    const cleanUrl = (u) => (u || '').replace(/^https?:\/\//, '').replace(/\/$/, '');
+    const resGroups = (res.groups || []).map(g => ({
+      title: g.title, subtitle: g.subtitle,
+      items: (g.items || []).map(it => {
+        const tags = it.tags || [];
+        const subs = it.sublinks || [];
+        const primaryTag = tags.find(t => TAGCOLOR[t]);
+        return {
+          name: it.name, desc: it.desc, url: it.url,
+          displayUrl: cleanUrl(it.url),
+          accent: primaryTag ? TAGCOLOR[primaryTag] : '#C9C0B2',
+          tagList: tags.map(tagStyle),
+          hasSublinks: subs.length > 0,
+          subList: subs,
+        };
+      }),
+    }));
+
+    return {
+      total: prompts.length || '100＋',
+      chapters, byDomain, byGrade, gradeNav,
+      hasResNote: !!res.note,
+      resNote: res.note || '',
+      resGroups,
+    };
+  }
+}
+</script>
+</body>
+</html>
